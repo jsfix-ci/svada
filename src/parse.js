@@ -1,6 +1,6 @@
 'use strict';
 
-const parse = require('csv-parse/lib/sync');
+const parse = require('csv-parse/sync');
 const fs = require('fs');
 
 const SvadaTypes = [];
@@ -11,7 +11,7 @@ module.exports = {
    */
   loadSvada() {
     const raw = fs.readFileSync(__dirname + '/svadagenerator.csv').toString();
-    const data = parse(raw, {
+    const data = parse.parse(raw, {
       delimiter: ';',
       skip_empty_lines: true,
       trim: true,
